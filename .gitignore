@@ -1,0 +1,82 @@
+maxgputemp 85
+stratumproxy enabled
+proxywallet 0xd18178cbadbf68ad8d78279d6db58f0c964e318c
+proxypool1 eth-us.dwarfpool.com:8008
+proxypool2 eth-eu.dwarfpool.com:8008
+flags --cl-global-work 16384 --farm-recheck 200
+globalfan 85
+
+# !!!!!!!!!!!!! IMPORTANT NOTICE !!!!!!!!!!!!!!!!!!
+#
+# Read the ethOS knowledge base, a useful guide to getting set up: http://ethosdistro.com/kb/
+# Read the ethOS changelog for version information and latest changes: http://ethosdistro.com/changelog/
+#
+# WARNING: Using apt-get to upgrade, update, and/or install packages is unsupported and will likely break ethOS.
+#
+# NOTE: There is no email or skype support for ethOS. 
+# If you need help with any aspect of ethOS, please talk to us in IRC (#ethereumOS on Freenode). 
+# If you do not have an IRC client, you can use this webchat: https://webchat.freenode.net/
+#
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#
+# EXAMPLES
+#
+# example config settings that apply to all rigs:
+#
+# maxgputemp 85
+# stratumproxy enabled
+# proxywallet 0x5eb6fd512408eef848a060d197e64b419d716bc7
+# proxypool1 eth-us.dwarfpool.com:8008
+# proxypool2 eth-eu.dwarfpool.com:8008
+# flags --farm-recheck 200
+# globalcore 1000
+# globalfan 90
+# globalpowertune 20
+# globalmem 1250
+#
+# example config settings that apply to individual rigs (and their respective individual GPUs):
+#
+# cor c94e13 950 950 950 950 950
+# mem c94e13 1250 1250 1250 1250 1250
+# fan c94e13 90 80 85 100 70
+# pwr c94e13 10 20 15 15 20
+# reb c94e13 1
+# cor a23def 970 1000 1100 980 1060
+# mem a23def 1250 1250 1500 1250 1500
+# fan a23def 100 100 70 60 90
+# pwr a23def 10 20 20 15 20
+# reb a23def 1
+#
+# DOCUMENTATION
+#
+# For instructions on setting configs, see http://ethosdistro.com/kb/#remote-config
+#
+# If using "pool" parameter, write WORKER (a placeholder variable) in place of rig name (i.e. NOT rig1, myrig, home, warehouse2, etc).
+#
+# pool:			use this if you have a network proxy or to define a getwork pool (example: http://pool.com:port/WORKER )
+# stratumproxy:		enabled or disabled, if enabled, you will bypass "pool" and connect to stratum proxy located on this rig
+# proxy wallet: 	the ethereum address to which this rig's proxy will mine (only used if stratumproxy is enabled)
+# proxypool1:		this rig's stratum proxy's first pool (only used if stratumproxy is enabled)
+# proxypool2:		this rig's stratum proxy's failover pool (only used if stratumproxy is enabled)
+# flags:		set desired ethminer flags here
+# maxgputemp:		the temperature in C that your GPUs will trigger ethminer to turn off
+# globalcore:		set the global core clock of all GPUs
+# globalmem: 		set the global mem clock of all GPUs
+# globalfan: 		set the fan speed percent of all GPUs
+# globalpowertune:	set the power tune setting of all GPUs (notes from dev: 20 is default/max on everything except 290/390; r9 290 should use 50)
+#
+# Your WORKER names are assigned automatically by the OS, do not change them. They are 6-digit alphanumeric codes. 
+#
+# cor [worker]:	set the core clock of individual GPUs on a single rig, [worker] is the worker/rig name of the single rig as assigned by the OS.
+# mem [worker]:	set the core clock of individual GPUs on a single rig, [worker] is the worker/rig name of the single rig as assigend by the OS.
+# fan [worker]: set the fan speed of individual GPUs on a single rig, [worker] is the worker/rig name of the single rig as assigend by the OS.
+# pwr [worker]: set the powertune of individual GPUs on a single rig, [worker] is the worker/rig name of the single rig as assigend by the OS.
+# reb [worker]:	increment this value (example: 4 becomes 5) and the single rig will automatically reboot within 10 minutes.
+#
+# AUTOMATIC REBOOT NOTES
+#
+# You are able to reboot remotely. Start with "1" (no quotes) to reboot a rig:
+#
+# reb a23def 1
+#
+# Then, if you want to reboot again, increment it to 2, then 3, then 4, etc etc (never skip any numbers).
